@@ -4,19 +4,12 @@
     <hello></hello>
     {{ hhh }}
     {{ object.FirstName }}
-    <template v-if="loginType === 'username'">
-      <label>Username</label>
-      <input placeholder="Enter your username">
-    </template>
-    <template v-else>
-      <label>Email</label>
-      <input placeholder="Enter your email address">
-    </template>
   </div>
 </template>
 
 <script>
 import Hello from './components/Hello'
+import axios from 'axios'
 console.log();
 export default {
   name: 'app',
@@ -34,6 +27,14 @@ export default {
     }
   }
 }
+
+axios.get('http://localhost:8088/api/user')
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 </script>
 
 <style>
